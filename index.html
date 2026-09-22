@@ -1,0 +1,720 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rene Foods</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f8fa;
+    color: #18324a;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+    background: white;
+    box-shadow: 0 2px 12px #0001;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 42px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+    color: #147a4b;
+    font-size: 32px;
+}
+
+.logo h1 span {
+    color: #e86b27;
+}
+
+.logo p {
+    margin: 3px 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #806522;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #18324a;
+    font-weight: bold;
+}
+
+.cart-btn {
+    background: #147a4b;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* MAIN */
+main {
+    max-width: 1400px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+
+/* HERO */
+.hero {
+    background:
+        linear-gradient(90deg, #10251ee8, #10251e55),
+        url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+
+    padding: 65px 45px;
+    border-radius: 18px;
+    color: white;
+}
+
+.hero h2 {
+    font-family: Georgia, serif;
+    font-size: 45px;
+    margin: 0 0 15px;
+}
+
+/* LAYOUT */
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #e8edf4;
+    color: #18324a;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: #147a4b;
+    color: white;
+}
+
+/* FOOD GRID */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.food-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px #0000000b;
+}
+
+.food-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 14px;
+}
+
+.food-info h3 {
+    font-size: 17px;
+    margin: 0 0 12px;
+}
+
+.food-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.add-btn {
+    background: #147a4b;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #0d603a;
+}
+
+/* SIDEBAR */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panel {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px #0000000b;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+.input {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0;
+    border: 1px solid #d8e0e8;
+    border-radius: 8px;
+}
+
+.login-btn,
+.checkout-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.login-btn {
+    background: #147a4b;
+}
+
+.checkout-btn {
+    background: #e86b27;
+}
+
+/* CART */
+.cart-item {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item strong {
+    display: block;
+    font-size: 14px;
+}
+
+.cart-item small {
+    color: #718096;
+}
+
+.cart-controls {
+    margin-top: 8px;
+}
+
+.cart-controls button {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin: 18px 0;
+}
+
+.empty {
+    color: #718096;
+    font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #18324a;
+    color: white;
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 12px 4%;
+    }
+
+    .logo h1 {
+        font-size: 25px;
+    }
+
+    nav a {
+        display: none;
+    }
+
+    .hero {
+        padding: 40px 25px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <div class="logo-icon">🌿</div>
+
+        <div>
+            <h1>Rene <span>Foods</span></h1>
+            <p>GOOD FOOD • HAPPY MOOD</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact</a>
+
+        <button class="cart-btn"
+                onclick="document.getElementById('cart').scrollIntoView()">
+            🛒 Cart (<span id="count">0</span>)
+        </button>
+    </nav>
+</header>
+
+<main id="home">
+
+<!-- HERO -->
+<section class="hero">
+    <h2>Delicious Food<br>For Every Mood</h2>
+    <p>Fresh • Healthy • Tasty</p>
+</section>
+
+<div class="layout">
+
+<!-- FOOD SECTION -->
+<section id="menu">
+
+    <div class="tabs">
+        <button class="tab active"
+                id="vegTab"
+                onclick="switchMenu('veg')">
+            🌿 Vegetarian Foods
+        </button>
+
+        <button class="tab"
+                id="nonvegTab"
+                onclick="switchMenu('nonveg')">
+            🍗 Non-Vegetarian Foods
+        </button>
+    </div>
+
+    <h2 id="menuTitle">Vegetarian Foods</h2>
+
+    <div class="food-grid" id="foodGrid"></div>
+
+</section>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <!-- LOGIN -->
+    <div class="panel">
+        <h2>👤 Login</h2>
+
+        <input class="input"
+               type="email"
+               placeholder="Email or Username">
+
+        <input class="input"
+               type="password"
+               placeholder="Password">
+
+        <button class="login-btn"
+                onclick="loginUser()">
+            Login
+        </button>
+
+        <p style="text-align:center">
+            Don't have an account?
+            <b style="color:#147a4b">Sign Up</b>
+        </p>
+    </div>
+
+    <!-- SHOPPING CART -->
+    <div class="panel" id="cart">
+
+        <h2>🛒 My Cart</h2>
+
+        <div id="cartItems" class="empty">
+            Your cart is empty.
+        </div>
+
+        <div class="summary">
+            <span>Subtotal</span>
+            <span id="subtotal">₹0.00</span>
+        </div>
+
+        <button class="checkout-btn"
+                onclick="checkout()">
+            View Cart / Checkout
+        </button>
+    </div>
+
+</aside>
+
+</div>
+</main>
+
+<footer id="contact">
+    © 2026 Rene Foods. All rights reserved.
+</footer>
+
+<script>
+
+// FOOD DATA
+const menus = {
+
+    veg: [
+        {
+            name: "Paneer Butter Masala",
+            price: 199,
+            image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Vegetable Biryani",
+            price: 179,
+            image: "https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Palak Paneer",
+            price: 169,
+            image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Veg Fried Rice",
+            price: 149,
+            image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Chana Masala",
+            price: 139,
+            image: "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Vegetable Noodles",
+            price: 159,
+            image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80"
+        }
+    ],
+
+    nonveg: [
+        {
+            name: "Chicken Biryani",
+            price: 249,
+            image: "https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Butter Chicken",
+            price: 279,
+            image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Chicken Tikka",
+            price: 229,
+            image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Fish Fry",
+            price: 259,
+            image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Mutton Curry",
+            price: 319,
+            image: "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+            name: "Chicken Noodles",
+            price: 219,
+            image: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=700&q=80"
+        }
+    ]
+
+};
+
+// APPLICATION STATE
+let currentMenu = "veg";
+let cart = [];
+
+// SWITCH FOOD TAB
+function switchMenu(type) {
+
+    currentMenu = type;
+
+    document.getElementById("vegTab")
+        .classList.toggle("active", type === "veg");
+
+    document.getElementById("nonvegTab")
+        .classList.toggle("active", type === "nonveg");
+
+    document.getElementById("menuTitle").textContent =
+        type === "veg"
+        ? "Vegetarian Foods"
+        : "Non-Vegetarian Foods";
+
+    renderMenu();
+}
+
+// DISPLAY FOOD ITEMS
+function renderMenu() {
+
+    const grid = document.getElementById("foodGrid");
+
+    grid.innerHTML = "";
+
+    menus[currentMenu].forEach((item, index) => {
+
+        const card = document.createElement("article");
+
+        card.className = "food-card";
+
+        card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+
+            <div class="food-info">
+                <h3>${item.name}</h3>
+
+                <div class="food-bottom">
+                    <span class="price">₹${item.price}</span>
+
+                    <button class="add-btn">
+                        ADD
+                    </button>
+                </div>
+            </div>
+        `;
+
+        card.querySelector(".add-btn")
+            .addEventListener("click", () => {
+                addToCart(item);
+            });
+
+        grid.appendChild(card);
+    });
+}
+
+// ADD ITEM TO CART
+function addToCart(item) {
+
+    const existingItem = cart.find(
+        cartItem => cartItem.name === item.name
+    );
+
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({
+            ...item,
+            quantity: 1
+        });
+    }
+
+    renderCart();
+}
+
+// RENDER SHOPPING CART
+function renderCart() {
+
+    const cartItems = document.getElementById("cartItems");
+
+    const totalItems = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
+
+    const totalPrice = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
+
+    document.getElementById("count").textContent = totalItems;
+
+    document.getElementById("subtotal").textContent =
+        "₹" + totalPrice.toFixed(2);
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML =
+            '<div class="empty">Your cart is empty.</div>';
+
+        return;
+    }
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+
+        const cartRow = document.createElement("div");
+
+        cartRow.className = "cart-item";
+
+        cartRow.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+
+            <div style="flex:1">
+                <strong>${item.name}</strong>
+
+                <small>
+                    ₹${item.price} × ${item.quantity}
+                </small>
+
+                <div class="cart-controls">
+                    <button class="decrease">−</button>
+
+                    <b>${item.quantity}</b>
+
+                    <button class="increase">+</button>
+
+                    <button class="remove">✕</button>
+                </div>
+            </div>
+        `;
+
+        cartRow.querySelector(".decrease")
+            .addEventListener("click", () => {
+                changeQuantity(index, -1);
+            });
+
+        cartRow.querySelector(".increase")
+            .addEventListener("click", () => {
+                changeQuantity(index, 1);
+            });
+
+        cartRow.querySelector(".remove")
+            .addEventListener("click", () => {
+                removeItem(index);
+            });
+
+        cartItems.appendChild(cartRow);
+    });
+}
+
+// CHANGE QUANTITY
+function changeQuantity(index, amount) {
+
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    renderCart();
+}
+
+// REMOVE ITEM
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    renderCart();
+}
+
+// LOGIN DEMO
+function loginUser() {
+
+    alert(
+        "Demo login. Connect this to your authentication API."
+    );
+}
+
+// CHECKOUT DEMO
+function checkout() {
+
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    alert(
+        "Demo checkout. Connect this to your payment service."
+    );
+}
+
+// INITIALIZE PAGE
+renderMenu();
+renderCart();
+
+</script>
+
+</body>
+</html>
